@@ -155,7 +155,10 @@ describe "User pages" do
     let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "foo") }
     let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "bar") }
 
-    before { visit user_path(user) }
+    before do
+      sign_in user
+      visit user_path(user)
+    end
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
@@ -164,6 +167,31 @@ describe "User pages" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
       it { should have_content(user.microposts.count) }
+      it { should have_link("delete", href: micropost_path(m1)) }
+      it { should have_link("delete", href: micropost_path(m2)) }
+    end
+  end
+
+  describe "another profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:another_user) { FactoryGirl.create(:user) }
+    let!(:m1) { FactoryGirl.create(:micropost, user: another_user, content: "foo") }
+    let!(:m2) { FactoryGirl.create(:micropost, user: another_user, content: "bar") }
+
+    before do
+      sign_in user
+      visit user_path(another_user)
+    end
+
+    it { should have_content(another_user.name) }
+    it { should have_title(another_user.name) }
+
+    describe "microposts" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(another_user.microposts.count) }
+      it { should_not have_link("delete", href: micropost_path(m1)) }
+      it { should_not have_link("delete", href: micropost_path(m2)) }
     end
   end
 end
