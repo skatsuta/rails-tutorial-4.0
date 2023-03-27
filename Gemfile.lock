@@ -74,7 +74,7 @@ GEM
     cucumber-wire (0.0.1)
     diff-lcs (1.3)
     erubis (2.7.0)
-    execjs (2.7.0)
+    execjs (2.8.1)
     factory_girl (4.2.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.2.1)
@@ -119,7 +119,7 @@ GEM
     mime-types (1.25.1)
     mini_portile2 (2.1.0)
     minitest (4.7.5)
-    multi_json (1.12.1)
+    multi_json (1.15.0)
     multi_test (0.1.2)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
@@ -213,9 +213,9 @@ GEM
     turbolinks (1.1.1)
       coffee-rails
     tzinfo (0.3.52)
-    uglifier (2.1.1)
+    uglifier (2.7.2)
       execjs (>= 0.3.0)
-      multi_json (~> 1.0, >= 1.0.2)
+      json (>= 1.8.0)
     websocket (1.0.7)
     will_paginate (3.0.4)
     xpath (2.0.0)
@@ -252,7 +252,7 @@ DEPENDENCIES
   sqlite3 (= 1.3.8)
   terminal-notifier-guard (= 1.7.0)
   turbolinks (= 1.1.1)
-  uglifier (= 2.1.1)
+  uglifier (= 2.7.2)
   will_paginate (= 3.0.4)
 
 RUBY VERSION
